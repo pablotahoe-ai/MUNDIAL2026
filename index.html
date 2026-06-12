@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#07111f" />
+    <title>App Mundial Resumen</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell" aria-label="Resúmenes del Mundial">
+      <section class="wallpaper-stage" id="stage">
+        <img
+          class="wallpaper"
+          id="wallpaper"
+          src="./assets/mundial-wallpaper.png"
+          alt="Pantallas mundialistas con accesos a resúmenes"
+        />
+        <div class="hotspot-layer" id="hotspotLayer" aria-label="Pantallas disponibles"></div>
+        <a class="outcomy-logo" id="outcomyLogo" href="#" aria-label="Outcomy">
+          <img class="outcomy-logo-off" src="./assets/outcomy-off.png" alt="" />
+          <img class="outcomy-logo-on" src="./assets/outcomy-on.png" alt="" />
+        </a>
+        <button class="admin-picture" id="openAdmin" type="button" aria-label="Administrador">
+          <img src="./assets/cuadro-maradona.png" alt="" />
+        </button>
+      </section>
+
+      <div class="brand-pill" aria-label="App Mundial Resumen">
+        <span>Resumen Mundial</span>
+      </div>
+
+    </main>
+
+    <dialog class="video-dialog" id="videoDialog" aria-label="Resumen seleccionado">
+      <div class="video-backdrop" data-close-video></div>
+      <article class="video-card">
+        <header class="video-header">
+          <div>
+            <p class="video-date" id="videoDate"></p>
+            <h1 id="videoTitle">Resumen no disponible todavía.</h1>
+          </div>
+          <button class="icon-button" id="closeVideo" type="button" aria-label="Cerrar">×</button>
+        </header>
+
+        <div class="player-frame" id="playerFrame"></div>
+
+        <footer class="video-footer">
+          <button class="nav-button" id="prevVideo" type="button" aria-label="Anterior">‹</button>
+          <span class="index-pill" id="videoIndex">0 / 0</span>
+          <a class="youtube-button" id="openYoutube" target="_blank" rel="noreferrer">YouTube</a>
+          <button class="nav-button" id="nextVideo" type="button" aria-label="Siguiente">›</button>
+        </footer>
+      </article>
+    </dialog>
+
+    <dialog class="auth-dialog" id="authDialog" aria-label="Ingreso administrador">
+      <form class="auth-panel" id="authForm" method="dialog">
+        <button class="icon-button auth-close" id="closeAuth" type="button" aria-label="Cerrar">×</button>
+        <img class="auth-image" src="./assets/cuadro-maradona.png" alt="" />
+        <h2>aquí solo pueden entrar los campeones del mundo</h2>
+        <label>
+          Contraseña
+          <input id="adminPassword" type="password" autocomplete="current-password" required />
+        </label>
+        <p class="auth-message" id="authMessage" role="status"></p>
+        <button class="primary-button" type="submit">Entrar</button>
+      </form>
+    </dialog>
+
+    <dialog class="admin-dialog" id="adminDialog" aria-label="Panel de carga">
+      <form class="admin-panel" id="adminForm">
+        <header class="admin-header">
+          <div>
+            <p>Administrador</p>
+            <h2>Cargar resumen del Mundial</h2>
+          </div>
+          <button class="icon-button" id="closeAdmin" type="button" aria-label="Cerrar">×</button>
+        </header>
+
+        <label>
+          TV
+          <select id="targetTv" required>
+            <option value="">Seleccionar TV</option>
+          </select>
+        </label>
+
+        <label>
+          Título del partido
+          <input id="matchTitle" type="text" required placeholder="Argentina vs Japón" />
+        </label>
+
+        <label>
+          Fecha
+          <input id="matchDate" type="date" />
+        </label>
+
+        <label>
+          Link de YouTube
+          <input id="youtubeUrl" type="url" required placeholder="https://www.youtube.com/watch?v=..." />
+        </label>
+
+        <label>
+          Orden
+          <input id="sortOrder" type="number" min="1" step="1" placeholder="1" />
+        </label>
+
+        <label>
+          Miniatura personalizada
+          <input id="thumbnailOverride" type="url" placeholder="https://..." />
+        </label>
+
+        <p class="admin-message" id="adminMessage" role="status"></p>
+
+        <div class="admin-actions">
+          <button class="primary-button" type="submit">Guardar</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="./backend-config.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

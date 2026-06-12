@@ -1,0 +1,8 @@
+[
+  { "tvId": "tv_1", "title": "Grupos A y B", "image": "./assets/grupos-ab.png" },
+  { "tvId": "tv_2", "title": "Grupos C y D", "image": "./assets/grupos-cd.png" },
+  { "tvId": "tv_3", "title": "Grupos E y F", "image": "./assets/grupos-ef.png" },
+  { "tvId": "tv_4", "title": "Grupos G y H", "image": "./assets/grupos-gh.png" },
+  { "tvId": "tv_5", "title": "Grupos I y J", "image": "./assets/grupos-ij.png" },
+  { "tvId": "tv_6", "title": "Grupos K y L", "image": "./assets/grupos-kl.png" }
+]

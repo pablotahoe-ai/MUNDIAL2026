@@ -1,0 +1,8 @@
+[
+  { "id": "tv_1", "label": "TV 1", "x": 12.0, "y": 19.4, "width": 24.3, "height": 19.2 },
+  { "id": "tv_2", "label": "TV 2", "x": 37.6, "y": 19.4, "width": 24.1, "height": 19.2 },
+  { "id": "tv_3", "label": "TV 3", "x": 62.9, "y": 19.4, "width": 24.2, "height": 19.2 },
+  { "id": "tv_4", "label": "TV 4", "x": 12.0, "y": 40.7, "width": 24.3, "height": 19.6 },
+  { "id": "tv_5", "label": "TV 5", "x": 37.6, "y": 40.7, "width": 24.1, "height": 19.6 },
+  { "id": "tv_6", "label": "TV 6", "x": 62.9, "y": 40.7, "width": 24.2, "height": 19.6 }
+]
