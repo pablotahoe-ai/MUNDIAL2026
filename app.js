@@ -224,10 +224,9 @@ function renderAdminOptions() {
 
 function openTv(tvId) {
   state.activeTvId = tvId;
-  const ordered = getOrderedSummaries();
-  const summaryIndex = ordered.findIndex((summary) => summary.tvId === tvId && summary.active);
-  state.activeIndex = summaryIndex;
-  state.selectedSummary = summaryIndex >= 0 ? ordered[summaryIndex] : null;
+  const ordered = getOrderedSummaries(tvId);
+  state.activeIndex = ordered.length ? 0 : -1;
+  state.selectedSummary = ordered[0] || null;
 
   const node = els.hotspotLayer.querySelector(`[data-tv-id="${tvId}"]`);
   node?.classList.add("is-active");
@@ -247,7 +246,7 @@ function closeVideo() {
 }
 
 function renderVideo() {
-  const ordered = getOrderedSummaries();
+  const ordered = getOrderedSummaries(state.activeTvId);
   const summary = state.selectedSummary || null;
   const fallbackTv = state.hotspots.find((item) => item.id === state.activeTvId);
 
@@ -313,13 +312,12 @@ function handlePlayerAction(event) {
 }
 
 function navigateVideo(direction) {
-  const ordered = getOrderedSummaries();
+  const ordered = getOrderedSummaries(state.activeTvId);
   if (!ordered.length) return;
-  const currentIndex = state.activeIndex >= 0 ? state.activeIndex : ordered.findIndex((item) => item.tvId === state.activeTvId);
+  const currentIndex = state.activeIndex >= 0 ? state.activeIndex : ordered.findIndex((item) => item.id === state.selectedSummary?.id);
   const nextIndex = currentIndex + direction;
   if (nextIndex < 0 || nextIndex >= ordered.length) return;
   state.activeIndex = nextIndex;
-  state.activeTvId = ordered[nextIndex].tvId;
   state.selectedSummary = ordered[nextIndex];
   renderVideo();
 }
@@ -470,9 +468,9 @@ function refreshLoadedHotspots() {
   });
 }
 
-function getOrderedSummaries() {
+function getOrderedSummaries(tvId = null) {
   return state.summaries
-    .filter((item) => item.active)
+    .filter((item) => item.active && (!tvId || item.tvId === tvId))
     .slice()
     .sort((a, b) => (a.sortOrder || 999) - (b.sortOrder || 999) || b.updatedAt.localeCompare(a.updatedAt));
 }
